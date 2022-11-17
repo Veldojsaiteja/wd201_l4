@@ -1,74 +1,55 @@
 const todoList = () => {
-  all = [];
+  all_sai = [];
   const add = (todoItem) => {
-    all.push(todoItem);
+    all_sai.push(todoItem);
   };
   const markAsComplete = (index) => {
-    all[index].completed = true;
+    all_sai[index].completed = true;
   };
 
-  var yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1).toLocaleString("en-CA");
+  var yesterday_sai = new Date();
+  yesterday_sai.setDate(yesterday_sai.getDate() - 1).toLocaleString("en-CA");
 
-  var today = new Date().toLocaleString("en-CA");
+  var today_sai = new Date().toLocaleString("en-CA");
 
-  var tom = new Date();
-  tom.setDate(tom.getDate() + 1).toLocaleString("en-CA");
+  var tom_sai = new Date();
+  tom_sai.setDate(tom_sai.getDate() + 1).toLocaleString("en-CA");
   const overdue = () => {
-    // Write the date check condition here and return the array of overdue items accordingly.
-    // FILL YOUR CODE HERE
-    // ..
-    // ..
-    // ..
     var od = [];
-    for (var i = 0; i < all.length; i++) {
-      if (all[i].dueDate == yesterday) {
-        od.push(all[i]);
-      }
+    var i = 0;
+    while(i < all_sai.length){
+      if (all_sai[i].dueDate == yesterday_sai) {
+         od.push(all_sai[i]);
+        }
+      i++;
     }
     return od;
   };
 
   const dueToday = () => {
-    // Write the date check condition here and return the array of todo items that are due today accordingly.
-    // FILL YOUR CODE HERE
-    // ..
-    // ..
-    // ..
     var dt = [];
-    for (var i = 0; i < all.length; i++) {
-      if (all[i].dueDate == today) {
-        dt.push(all[i]);
+    for (var i = 0; i < all_sai.length; i++) {
+      if (all_sai[i].dueDate == today_sai) {
+        dt.push(all_sai[i]);
       }
     }
     return dt;
   };
 
   const dueLater = () => {
-    // Write the date check condition here and return the array of todo items that are due later accordingly.
-    // FILL YOUR CODE HERE
-    // ..
-    // ..
-    // ..
     var dl = [];
-    for (var i = 0; i < all.length; i++) {
-      if (all[i].dueDate == tom) {
-        dl.push(all[i]);
+    for (var i = 0; i < all_sai.length; i++) {
+      if (all_sai[i].dueDate == tom_sai) {
+        dl.push(all_sai[i]);
       }
     }
     return dl;
   };
 
   const toDisplayableList = (list) => {
-    // Format the To-Do list here, and return the output string as per the format given above.
-    // FILL YOUR CODE HERE
-    // ..
-    // ..
-    // ..
-    // return OUTPUT_STRING
     var OUTPUT_STRING = "", i = 0;
     for (i = 0; i < list.length - 1; i++) {
-      if (list[i].dueDate != today) {
+      if (list[i].dueDate != today_sai) {
         OUTPUT_STRING =
           OUTPUT_STRING + "[ ] " + list[i].title + " " + list[i].dueDate + "\n";
       } else {
@@ -80,7 +61,7 @@ const todoList = () => {
       }
     }
 
-    if (list[i].dueDate != today) {
+    if (list[i].dueDate != today_sai) {
       OUTPUT_STRING =
         OUTPUT_STRING + "[ ] " + list[i].title + " " + list[i].dueDate;
     } else {
